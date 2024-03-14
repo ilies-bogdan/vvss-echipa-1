@@ -92,3 +92,32 @@
 2024-03-14 17:59:52 INFO  Main:40 - application start
 2024-03-14 17:59:52 INFO  Controller:76 - Main controller initializing
 2024-03-14 17:59:55 INFO  NewEditController:89 - new/edit window initializing
+2024-03-14 18:10:53 INFO  Main:35 - saved data reading
+2024-03-14 18:10:53 INFO  Main:40 - application start
+2024-03-14 18:10:53 INFO  TasksController:76 - Main controller initializing
+2024-03-14 18:11:37 INFO  Main:35 - saved data reading
+2024-03-14 18:11:37 INFO  Main:40 - application start
+2024-03-14 18:11:37 INFO  TasksController:76 - Main controller initializing
+2024-03-14 18:11:41 INFO  NewEditController:89 - new/edit window initializing
+2024-03-14 18:11:54 INFO  Main:35 - saved data reading
+2024-03-14 18:11:54 INFO  Main:40 - application start
+2024-03-14 18:11:54 INFO  TasksController:76 - Main controller initializing
+2024-03-14 18:11:57 INFO  NewEditController:89 - new/edit window initializing
+2024-03-14 18:12:00 INFO  NewEditController:89 - new/edit window initializing
+2024-03-14 18:16:52 INFO  Main:35 - saved data reading
+2024-03-14 18:16:52 INFO  Main:40 - application start
+2024-03-14 18:16:52 INFO  TasksController:76 - Main controller initializing
+2024-03-14 18:17:15 INFO  TaskInfoController:24 - task info window initializing
+2024-03-14 18:17:58 INFO  TaskInfoController:24 - task info window initializing
+2024-03-14 18:18:36 INFO  TaskInfoController:24 - task info window initializing
+2024-03-14 18:20:43 INFO  Main:35 - saved data reading
+2024-03-14 18:20:43 INFO  Main:40 - application start
+2024-03-14 18:20:43 INFO  TasksController:76 - Main controller initializing
+2024-03-14 18:21:02 INFO  NewEditController:89 - new/edit window initializing
+2024-03-14 18:21:31 INFO  TaskInfoController:24 - task info window initializing
+2024-03-14 18:21:31 ERROR TasksController:129 - error loading task-info.fxml
+2024-03-14 18:21:33 INFO  TaskInfoController:24 - task info window initializing
+2024-03-14 18:21:48 INFO  Main:35 - saved data reading
+2024-03-14 18:21:48 INFO  Main:40 - application start
+2024-03-14 18:21:49 INFO  TasksController:76 - Main controller initializing
+2024-03-14 18:22:47 ERROR TasksController:141 - invalid format

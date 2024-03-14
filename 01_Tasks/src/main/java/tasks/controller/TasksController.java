@@ -26,8 +26,8 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TaskController {
-    private static final Logger log = Logger.getLogger(TaskController.class.getName());
+public class TasksController {
+    private static final Logger log = Logger.getLogger(TasksController.class.getName());
     public ObservableList<Task> tasksList;
     TasksService service;
     DateService dateService;
@@ -58,7 +58,7 @@ public class TaskController {
 
     public void setService(TasksService service){
         this.service=service;
-        this.dateService=new DateService(service);
+        this.dateService=new DateService();
         this.tasksList=service.getObservableList();
         updateCountLabel(tasksList);
         tasks.setItems(tasksList);

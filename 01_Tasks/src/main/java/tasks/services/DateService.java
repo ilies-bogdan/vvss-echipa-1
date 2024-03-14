@@ -13,11 +13,9 @@ public class DateService {
     public static final int MINUTES_IN_HOUR = 60;
     public static final int HOURS_IN_A_DAY = 24;
 
-    private TasksService service;
-
-    public DateService(TasksService service){
-        this.service=service;
+    public DateService(){
     }
+
     public static LocalDate getLocalDateValueFromDate(Date date){//for setting to DatePicker - requires LocalDate
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
@@ -43,7 +41,32 @@ public class DateService {
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minutes = calendar.get(Calendar.MINUTE);
 
-        return service.formTimeUnit(hours) + ":" + service.formTimeUnit(minutes);
+        return formTimeUnit(hours) + ":" + formTimeUnit(minutes);
+    }
+
+    public int parseFromStringToSeconds(String stringTime){//hh:MM
+        String[] units = stringTime.split(":");
+        int hours = Integer.parseInt(units[0]);
+        int minutes = Integer.parseInt(units[1]);
+        int result = (hours * DateService.MINUTES_IN_HOUR + minutes) * DateService.SECONDS_IN_MINUTE;
+        return result;
+    }
+
+    public String getIntervalInHours(int seconds){
+        int minutes = seconds / DateService.SECONDS_IN_MINUTE;
+        int hours = minutes / DateService.MINUTES_IN_HOUR;
+        minutes = minutes % DateService.MINUTES_IN_HOUR;
+        return formTimeUnit(hours) + ":" + formTimeUnit(minutes);//hh:MM
+    }
+
+    private String formTimeUnit(int timeUnit) {
+        StringBuilder sb = new StringBuilder();
+        if (timeUnit < 10) sb.append("0");
+        if (timeUnit == 0) sb.append("0");
+        else {
+            sb.append(timeUnit);
+        }
+        return sb.toString();
     }
 
 }

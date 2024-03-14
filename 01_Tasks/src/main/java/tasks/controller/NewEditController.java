@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 import tasks.model.Task;
 import tasks.services.DateService;
-import tasks.services.TaskIO;
+import tasks.persistence.TaskIO;
 import tasks.services.TasksService;
 
 import java.io.IOException;
@@ -72,7 +72,7 @@ public class NewEditController {
 
     public void setService(TasksService service){
         this.service =service;
-        this.dateService =new DateService(service);
+        this.dateService =new DateService();
     }
     public void setCurrentTask(Task task){
         this.currentTask=task;
@@ -100,6 +100,7 @@ public class NewEditController {
         datePickerStart.setValue(LocalDate.now());
         datePickerEnd.setDisable(false);
         txtFieldTimeStart.setText(DEFAULT_START_TIME);
+        txtFieldTimeEnd.setText(DEFAULT_END_TIME);
     }
 
     private void initEditWindow(String title){
@@ -112,7 +113,7 @@ public class NewEditController {
             checkBoxRepeated.setSelected(true);
             hideRepeatedTaskModule(false);
             //datePickerEnd.setValue(dateService.getLocalDateValueFromDate(currentTask.getEndTime()));
-            fieldInterval.setText(service.getIntervalInHours(currentTask));
+            fieldInterval.setText(dateService.getIntervalInHours(currentTask.getRepeatInterval()));
             txtFieldTimeEnd.setText(dateService.getTimeOfTheDayFromDate(currentTask.getEndTime()));
         }
         if (currentTask.isActive()){
@@ -157,11 +158,11 @@ public class NewEditController {
             currentTask = null;
         }
         TaskIO.rewriteFile(tasksList);
-        Controller.editNewStage.close();
+        TasksController.editNewStage.close();
     }
     @FXML
     public void closeDialogWindow(){
-        Controller.editNewStage.close();
+        TasksController.editNewStage.close();
     }
 
     private Task collectFieldsData(){
@@ -195,7 +196,7 @@ public class NewEditController {
         if (checkBoxRepeated.isSelected()){
             Date endDateWithNoTime = dateService.getDateValueFromLocalDate(datePickerEnd.getValue());
             Date newEndDate = dateService.getDateMergedWithTime(txtFieldTimeEnd.getText(), endDateWithNoTime);
-            int newInterval = service.parseFromStringToSeconds(fieldInterval.getText());
+            int newInterval = dateService.parseFromStringToSeconds(fieldInterval.getText());
             if (newStartDate.after(newEndDate)) throw new IllegalArgumentException("Start date should be before end");
             result = new Task(newTitle, newStartDate,newEndDate, newInterval);
         }

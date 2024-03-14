@@ -11,4 +11,6 @@ module tasks {
     exports tasks.view;
     opens tasks.controller to javafx.fxml;
     exports tasks.controller;
+    exports tasks.container;
+    opens tasks.container to javafx.base;
 }

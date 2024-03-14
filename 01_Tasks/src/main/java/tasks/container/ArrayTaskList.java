@@ -1,8 +1,9 @@
-package tasks.model;
+package tasks.container;
 
 
 
 import org.apache.log4j.Logger;
+import tasks.model.Task;
 
 import java.util.*;
 
