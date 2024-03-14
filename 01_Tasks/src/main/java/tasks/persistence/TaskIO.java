@@ -22,25 +22,20 @@ public class TaskIO {
 
     private static final Logger log = Logger.getLogger(TaskIO.class.getName());
     public static void write(TaskList tasks, OutputStream out) throws IOException {
-        DataOutputStream dataOutputStream = new DataOutputStream(out);
-        try {
+        try (DataOutputStream dataOutputStream = new DataOutputStream(out)) {
             dataOutputStream.writeInt(tasks.size());
-            for (Task t : tasks){
+            for (Task t : tasks) {
                 dataOutputStream.writeInt(t.getTitle().length());
                 dataOutputStream.writeUTF(t.getTitle());
                 dataOutputStream.writeBoolean(t.isActive());
                 dataOutputStream.writeInt(t.getRepeatInterval());
-                if (t.isRepeated()){
+                if (t.isRepeated()) {
                     dataOutputStream.writeLong(t.getStartTime().getTime());
                     dataOutputStream.writeLong(t.getEndTime().getTime());
-                }
-                else {
+                } else {
                     dataOutputStream.writeLong(t.getTime().getTime());
                 }
             }
-        }
-        finally {
-            dataOutputStream.close();
         }
     }
     public static void read(TaskList tasks, InputStream in)throws IOException {
@@ -182,7 +177,7 @@ public class TaskIO {
             if (timeEntities[j] == 0) j--;
         }
 
-        String[] numAndTextValues = trimmed.split(" "); //{"46", "minutes", "40", "seconds"};
+        String[] numAndTextValues = trimmed.split(" ");
         for (int k = 0 ; k < numAndTextValues.length; k+=2){
             timeEntities[i] = Integer.parseInt(numAndTextValues[k]);
             i++;
