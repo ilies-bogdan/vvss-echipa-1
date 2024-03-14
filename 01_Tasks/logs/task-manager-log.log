@@ -88,3 +88,7 @@
 2024-03-14 17:59:36 INFO  Main:35 - saved data reading
 2024-03-14 17:59:36 INFO  Main:40 - application start
 2024-03-14 17:59:37 INFO  Controller:76 - Main controller initializing
+2024-03-14 17:59:52 INFO  Main:35 - saved data reading
+2024-03-14 17:59:52 INFO  Main:40 - application start
+2024-03-14 17:59:52 INFO  Controller:76 - Main controller initializing
+2024-03-14 17:59:55 INFO  NewEditController:89 - new/edit window initializing
