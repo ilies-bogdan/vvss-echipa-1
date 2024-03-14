@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Controller {
     private static final Logger log = Logger.getLogger(Controller.class.getName());
@@ -129,6 +131,22 @@ public class Controller {
     }
     @FXML
     public void showFilteredTasks(){
+        String timeFrom = fieldTimeFrom.getText();
+        String timeTo = fieldTimeTo.getText();
+        String regex = "^([01]?\\d|2[0-3]):([0-5]?\\d)$";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(timeFrom);
+        if(!matcher.matches()){
+            log.error("invalid format");
+            return;
+        }
+        matcher=pattern.matcher(timeTo);
+        if(!matcher.matches()){
+            log.error("invalid format");
+            return;
+        }
+
         Date start = getDateFromFilterField(datePickerFrom.getValue(), fieldTimeFrom.getText());
         Date end = getDateFromFilterField(datePickerTo.getValue(), fieldTimeTo.getText());
 

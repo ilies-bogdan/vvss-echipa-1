@@ -98,6 +98,7 @@ public class NewEditController {
     private void initNewWindow(String title){
         currentStage.setTitle(title);
         datePickerStart.setValue(LocalDate.now());
+        datePickerEnd.setDisable(false);
         txtFieldTimeStart.setText(DEFAULT_START_TIME);
     }
 
@@ -106,11 +107,11 @@ public class NewEditController {
         fieldTitle.setText(currentTask.getTitle());
         datePickerStart.setValue(dateService.getLocalDateValueFromDate(currentTask.getStartTime()));
         txtFieldTimeStart.setText(dateService.getTimeOfTheDayFromDate(currentTask.getStartTime()));
-
+        datePickerEnd.setValue(dateService.getLocalDateValueFromDate(currentTask.getEndTime()));
         if (currentTask.isRepeated()){
             checkBoxRepeated.setSelected(true);
             hideRepeatedTaskModule(false);
-            datePickerEnd.setValue(dateService.getLocalDateValueFromDate(currentTask.getEndTime()));
+            //datePickerEnd.setValue(dateService.getLocalDateValueFromDate(currentTask.getEndTime()));
             fieldInterval.setText(service.getIntervalInHours(currentTask));
             txtFieldTimeEnd.setText(dateService.getTimeOfTheDayFromDate(currentTask.getEndTime()));
         }
@@ -130,12 +131,12 @@ public class NewEditController {
         }
     }
     private void hideRepeatedTaskModule(boolean toShow){
-        datePickerEnd.setDisable(toShow);
+        //datePickerEnd.setDisable(toShow);
         fieldInterval.setDisable(toShow);
-        txtFieldTimeEnd.setDisable(toShow);
+        //txtFieldTimeEnd.setDisable(toShow);
 
-        datePickerEnd.setValue(LocalDate.now());
-        txtFieldTimeEnd.setText(DEFAULT_END_TIME);
+        //datePickerEnd.setValue(LocalDate.now());
+        //txtFieldTimeEnd.setText(DEFAULT_END_TIME);
         fieldInterval.setText(DEFAULT_INTERVAL_TIME);
     }
 

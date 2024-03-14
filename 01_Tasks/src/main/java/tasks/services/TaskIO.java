@@ -263,29 +263,25 @@ public class TaskIO {
         return result.toString().trim();
     }
 
-    public static String getFormattedInterval(int interval){
-        if (interval <= 0) throw new IllegalArgumentException("Interval <= 0");
+    public static String getFormattedInterval(int interval) {
+        if (interval <= 0) {
+            throw new IllegalArgumentException("Interval <= 0");
+        }
+
+        int hours = interval / secondsInHour;
+        int minutes = (interval % secondsInHour) / secondsInMin;
+
         StringBuilder sb = new StringBuilder();
-
-        int days = interval/secondsInDay;
-        int hours = (interval - secondsInDay*days) / secondsInHour;
-        int minutes = (interval - (secondsInDay*days + secondsInHour*hours)) / secondsInMin;
-        int seconds = (interval - (secondsInDay*days + secondsInHour*hours + secondsInMin*minutes));
-
-        int[] time = new int[]{days, hours, minutes, seconds};
-        int i = 0, j = time.length-1;
-        while (time[i] == 0 || time[j] == 0){
-            if (time[i] == 0) i++;
-            if (time[j] == 0) j--;
+        if (hours > 0) {
+            sb.append(hours).append(hours > 1 ? " hours " : " hour ");
+        }
+        if (minutes > 0) {
+            sb.append(minutes).append(minutes > 1 ? " minutes" : " minute");
         }
 
-        for (int k = i; k <= j; k++){
-            sb.append(time[k]);
-            sb.append(time[k] > 1 ? TIME_ENTITY[k]+ "s" : TIME_ENTITY[k]);
-            sb.append(" ");
-        }
-        return sb.toString();
+        return sb.toString().trim();
     }
+
 
 
     public static void rewriteFile(ObservableList<Task> tasksList) {
