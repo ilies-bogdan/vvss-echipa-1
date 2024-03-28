@@ -92,4 +92,54 @@ class DateServiceTest {
 
     }
 
+    @Nested
+    class DateServiceTestECP {
+        @Test
+        @DisplayName("ECP01")
+        void testValidTimeFutureDate() {
+            String time = "10:30";
+            Date futureDate = new Date(2025, Calendar.FEBRUARY, 28);
+
+            Date mergedDate = dateService.getDateMergedWithTime(time, futureDate);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(futureDate);
+            calendar.set(Calendar.HOUR_OF_DAY, 10);
+            calendar.set(Calendar.MINUTE, 30);
+
+            assertEquals(calendar.getTime(), mergedDate);
+        }
+
+        @Test
+        @DisplayName("ECP02")
+        void testInvalidTimeFormat() {
+            String invalidTime = "invalid";
+            Date anyDate = new Date();
+
+            assertThrows(IllegalArgumentException.class, () -> dateService.getDateMergedWithTime(invalidTime, anyDate));
+        }
+
+        @Test
+        @DisplayName("ECP03")
+        void testTimeUnitExceedingBounds() {
+            String timeExceedingHour = "25:00";
+            String timeExceedingMinute = "10:65";
+            Date anyDate = new Date();
+
+            assertThrows(IllegalArgumentException.class, () -> dateService.getDateMergedWithTime(timeExceedingHour, anyDate));
+            assertThrows(IllegalArgumentException.class, () -> dateService.getDateMergedWithTime(timeExceedingMinute, anyDate));
+        }
+
+        @Test
+        @DisplayName("ECP04")
+        void testPastDate() {
+            String time = "10:30";
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DATE, -1);
+            Date pastDate = calendar.getTime();
+
+            assertThrows(IllegalArgumentException.class, () -> dateService.getDateMergedWithTime(time, pastDate));
+        }
+    }
+
 }
