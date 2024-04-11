@@ -141,5 +141,4 @@ class DateServiceTest {
             assertThrows(IllegalArgumentException.class, () -> dateService.getDateMergedWithTime(time, pastDate));
         }
     }
-
 }
