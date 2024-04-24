@@ -121,3 +121,6 @@
 2024-03-14 18:21:48 INFO  Main:40 - application start
 2024-03-14 18:21:49 INFO  TasksController:76 - Main controller initializing
 2024-03-14 18:22:47 ERROR TasksController:141 - invalid format
+2024-04-24 20:57:50 INFO  Main:34 - saved data reading
+2024-04-24 20:57:50 INFO  Main:39 - application start
+2024-04-24 20:57:51 INFO  TasksController:76 - Main controller initializing
