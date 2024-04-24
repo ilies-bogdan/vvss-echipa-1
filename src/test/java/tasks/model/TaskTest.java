@@ -13,14 +13,14 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TaskTest {
+public class TaskTest {
 
     private Task task;
 
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         try {
             task = new Task("new task", Task.getDateFormat().parse("2023-02-12 10:10"));
         } catch (ParseException e) {
@@ -29,7 +29,7 @@ class TaskTest {
     }
 
     @Test
-    void testTaskCreation() throws ParseException {
+    public void testTaskCreation() throws ParseException {
         assert task.getTitle() == "new task";
         System.out.println(task.getFormattedDateStart());
         System.out.println(task.getDateFormat().format(Task.getDateFormat().parse("2023-02-12 10:10")));
@@ -37,11 +37,11 @@ class TaskTest {
     }
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
     }
 
     @Nested
-    class NextTimeAfterWBT {
+    public class NextTimeAfterWBT {
 
         @Test
         public void testNextTimeAfterF02_TC01() throws ParseException {

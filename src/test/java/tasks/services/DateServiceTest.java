@@ -15,7 +15,7 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DateServiceTest {
+public class DateServiceTest {
 
     private DateService dateService;
 
@@ -24,22 +24,22 @@ class DateServiceTest {
     private Date currentDate;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         dateService = new DateService();
         calendar = Calendar.getInstance();
         currentDate = new Date();
     }
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
     }
 
     @Nested
-    class DateServiceTestBVA {
+    public class DateServiceTestBVA {
 
         @RepeatedTest(3)
         @DisplayName("BVA01")
-        void getDateMergedWithTime_BVA01() {
+        public void getDateMergedWithTime_BVA01() {
             String time = "23:14";
             calendar.add(Calendar.DATE, 7);
             Date date = calendar.getTime();
@@ -53,7 +53,7 @@ class DateServiceTest {
         @Test
         @DisplayName("BVA02")
         @Timeout(2)
-        void getDateMergedWithTime_BVA02() {
+        public void getDateMergedWithTime_BVA02() {
             String time = "12:60";
             calendar.add(Calendar.DATE, 7);
             Date date = calendar.getTime();
@@ -67,7 +67,7 @@ class DateServiceTest {
         @ParameterizedTest
         @ValueSource(strings = {"21:53"})
         @DisplayName("BVA03")
-        void getDateMergedWithTime_BVA03(String time) {
+        public void getDateMergedWithTime_BVA03(String time) {
             calendar.add(Calendar.DATE, 1);
             Date date = calendar.getTime();
 
@@ -79,7 +79,7 @@ class DateServiceTest {
 
         @Test
         @DisplayName("BVA04")
-        void getDateMergedWithTime_BVA04() {
+        public void getDateMergedWithTime_BVA04() {
             String time = "21:53";
             calendar.add(Calendar.DATE, -1);
             Date date = calendar.getTime();
@@ -93,10 +93,10 @@ class DateServiceTest {
     }
 
     @Nested
-    class DateServiceTestECP {
+    public class DateServiceTestECP {
         @Test
         @DisplayName("ECP01")
-        void testValidTimeFutureDate() {
+        public void testValidTimeFutureDate() {
             String time = "10:30";
             Date futureDate = new Date(2025, Calendar.FEBRUARY, 28);
 
@@ -112,7 +112,7 @@ class DateServiceTest {
 
         @Test
         @DisplayName("ECP02")
-        void testInvalidTimeFormat() {
+        public void testInvalidTimeFormat() {
             String invalidTime = "invalid";
             Date anyDate = new Date();
 
@@ -121,7 +121,7 @@ class DateServiceTest {
 
         @Test
         @DisplayName("ECP03")
-        void testTimeUnitExceedingBounds() {
+        public void testTimeUnitExceedingBounds() {
             String timeExceedingHour = "25:00";
             String timeExceedingMinute = "10:65";
             Date anyDate = new Date();
@@ -132,7 +132,7 @@ class DateServiceTest {
 
         @Test
         @DisplayName("ECP04")
-        void testPastDate() {
+        public void testPastDate() {
             String time = "10:30";
             Calendar calendar = Calendar.getInstance();
             calendar.add(Calendar.DATE, -1);
