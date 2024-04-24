@@ -1,9 +1,17 @@
 tasks\controller\Notificator.class
+tasks\persistence\TaskIO.class
+tasks\container\ArrayTaskList.class
+tasks\container\LinkedTaskList$LinkedTaskListIterator.class
 tasks\view\Main.class
 tasks\controller\NewEditController.class
+tasks\controller\TasksController.class
+tasks\container\ArrayTaskList$ArrayTaskListIterator.class
 tasks\services\DateService.class
 module-info.class
 tasks\controller\TaskInfoController.class
+tasks\container\LinkedTaskList.class
+tasks\container\LinkedTaskList$Node.class
+tasks\container\TaskList.class
 tasks\model\TasksOperations.class
 tasks\model\Task.class
 tasks\services\TasksService.class
