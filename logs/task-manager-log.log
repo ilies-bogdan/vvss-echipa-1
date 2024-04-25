@@ -127,3 +127,6 @@
 2024-04-24 21:16:08 INFO  Main:34 - saved data reading
 2024-04-24 21:16:08 INFO  Main:39 - application start
 2024-04-24 21:16:08 INFO  TasksController:76 - Main controller initializing
+2024-04-25 19:23:27 ERROR Task:27 - time below bound
+2024-04-25 19:27:45 ERROR Task:27 - time below bound
+2024-04-25 19:36:58 ERROR Task:27 - time below bound
