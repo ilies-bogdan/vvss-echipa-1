@@ -34,7 +34,7 @@ public class DateServiceTest {
     public void tearDown() {
     }
 
-    @RepeatedTest(3)
+    @Test
     @DisplayName("BVA01")
     public void getDateMergedWithTime_BVA01() {
         String time = "23:14";
