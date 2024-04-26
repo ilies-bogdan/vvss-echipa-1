@@ -1,7 +1,7 @@
 package tasks.lab04.unit;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tasks.container.ArrayTaskList;
 import tasks.model.Task;
 import tasks.services.TasksService;
@@ -17,7 +17,7 @@ public class TaskServiceTest {
     private ArrayTaskList mockTaskList;
     private Task mockTask;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         mockTaskList = mock(ArrayTaskList.class);
         tasksService = new TasksService(mockTaskList);

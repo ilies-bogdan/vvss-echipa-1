@@ -1,7 +1,7 @@
 package tasks.lab04.integration;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tasks.container.ArrayTaskList;
 import tasks.model.Task;
 import tasks.services.TasksService;
@@ -16,7 +16,7 @@ public class FullIntegrationTest {
     private ArrayTaskList arrayTaskList;
     private Task task1, task2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         arrayTaskList = new ArrayTaskList();
         taskService = new TasksService(arrayTaskList);

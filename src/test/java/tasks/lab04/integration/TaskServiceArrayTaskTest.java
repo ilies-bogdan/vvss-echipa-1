@@ -1,7 +1,7 @@
 package tasks.lab04.integration;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import tasks.container.ArrayTaskList;
 import tasks.model.Task;
@@ -22,7 +22,7 @@ public class TaskServiceArrayTaskTest {
     private ArrayTaskList arrayTaskList;
     private Task mockTask1, mockTask2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         arrayTaskList = new ArrayTaskList();
         taskService = new TasksService(arrayTaskList);

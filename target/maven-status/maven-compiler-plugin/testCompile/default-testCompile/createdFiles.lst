@@ -1,5 +1,7 @@
 tasks\services\DateServiceTest.class
+tasks\lab04\integration\TaskServiceArrayTaskTest.class
 tasks\lab04\unit\ArrayTaskListTest.class
 tasks\lab04\unit\TaskTest.class
 tasks\model\TaskTest.class
+tasks\lab04\integration\FullIntegrationTest.class
 tasks\lab04\unit\TaskServiceTest.class

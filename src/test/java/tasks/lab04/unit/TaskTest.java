@@ -1,12 +1,13 @@
 package tasks.lab04.unit;
 
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import tasks.model.Task;
 
 import java.util.Date;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TaskTest {
@@ -16,7 +17,7 @@ public class TaskTest {
     private Date endTime;
     private static final int INTERVAL = 60 * 60;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         time = new Date();
         startTime = new Date(time.getTime());
@@ -30,8 +31,8 @@ public class TaskTest {
         assertTrue(task.isActive());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionForNegativeTime() {
-        new Task("Task", new Date(-1));
+        assertThrows(IllegalArgumentException.class, () -> new Task("Task", new Date(-1)));
     }
 }
